@@ -20,7 +20,7 @@ print(matplotlib.get_cachedir())
 # font_manager.fontManager.addfont(font_path)
 
 
-inputfile = './data_chapter6/data_chapter6.csv'  # 输入的数据文件
+inputfile = './data_chapter6/data.csv'  # 输入的数据文件
 data = pd.read_csv(inputfile)  # 读取数据
 
 # 描述性统计分析
@@ -60,7 +60,7 @@ print('输出数据的维度为：', new_reg_data.shape)  # 查看输出数据�
 
 # 构建灰色预测模型
 inputfile1 = './data_chapter6/new_reg_data.csv'  # 输入的数据文件
-inputfile2 = './data_chapter6/data_chapter6.csv'  # 输入的数据文件
+inputfile2 = './data_chapter6/data.csv'  # 输入的数据文件
 new_reg_data = pd.read_csv(inputfile1)  # 读取经过特征选择后的数据
 data = pd.read_csv(inputfile2)  # 读取总的数据
 new_reg_data.index = range(1994, 2014)
