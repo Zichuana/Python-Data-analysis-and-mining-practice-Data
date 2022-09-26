@@ -53,14 +53,17 @@ for i in range(n):
     gd = np.asarray(g) / 255
     bd = np.asarray(b) / 255
 
+    # 整体明暗程度
     data[i, 0] = rd.mean()  # 一阶颜色矩
     data[i, 1] = gd.mean()
     data[i, 2] = bd.mean()
 
+    # 图像颜色分布范围
     data[i, 3] = rd.std()  # 二阶颜色矩
     data[i, 4] = gd.std()
     data[i, 5] = bd.std()
 
+    # 图像颜色分布的对称性
     data[i, 6] = Var(rd)  # 三阶颜色矩
     data[i, 7] = Var(gd)
     data[i, 8] = Var(bd)
