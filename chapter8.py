@@ -67,7 +67,7 @@ sort_link = sort_link.sort_values('id', ascending=False).reset_index()
 
 del sort_link['index']  # 删除“index”列
 print(sort_links)
-
+pd.set_option('mode.chained_assignment', None)
 # 求百分比，然后更换列名，最后输出到文件
 sort_link['count'] = sort_link.apply(lambda line: line['id'] / data_nums, axis=1)
 print(sort_link)
