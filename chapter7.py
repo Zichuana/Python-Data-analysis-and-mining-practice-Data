@@ -198,6 +198,7 @@ for i in range(len(kinds)):
 ax.set_thetagrids(angle * 180 / np.pi, labels)
 plt.title('客户特征分析雷达图')
 plt.legend(legen)
+plt.savefig('./data_chapter7/res.jpg', dpi=300)
 plt.show()
 plt.close()
 

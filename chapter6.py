@@ -80,7 +80,7 @@ new_reg_data.to_excel(outputfile)  # 结果输出
 print('预测结果为：\n', new_reg_data.loc[2014:2015, :])  # 预测结果展示
 
 # 构建支持向量回归预测模型
-inputfile = './data_chapter6/new_reg_data_GM11.xls'  # 灰色预测后保存的路径
+inputfile = './data_chapter6/new_reg_data_GM11.xls'  # 灰色预测保存的路径
 data = pd.read_excel(inputfile)  # 读取数据
 print(data)
 feature = ['x1', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x13']  # 属性所在列
