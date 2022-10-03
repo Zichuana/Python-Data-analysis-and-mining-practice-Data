@@ -75,7 +75,6 @@ for i in range(n):
 data_tr, data_te, label_tr, label_te = train_test_split(data, labels, test_size=0.2,
                                                         random_state=10)
 
-
 # 模型训练(决策树)
 model = DecisionTreeClassifier(random_state=5).fit(data_tr, label_tr)
 
@@ -85,7 +84,6 @@ pre_te = model.predict(data_te)
 # 混淆矩阵
 cm_te = confusion_matrix(label_te, pre_te)
 print(cm_te)
-
 
 # 准确率
 print(accuracy_score(label_te, pre_te))
