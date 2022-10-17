@@ -67,7 +67,7 @@ model.add(Activation('sigmoid'))  # 以sigmoid函数为激活函数
 model.compile(loss='binary_crossentropy', optimizer='adam')
 
 model.fit(x_train, y_train, epochs=100, batch_size=1)  # 训练模型
-model.save_weights('../tmp/net.model')  # 保存模型参数
+model.save_weights('./data_chapter13/net.model')  # 保存模型参数
 
 r = pd.DataFrame(model.predict_step(x_test), columns=[u'预测结果'])
 
