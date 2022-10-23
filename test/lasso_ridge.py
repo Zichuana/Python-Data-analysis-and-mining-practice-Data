@@ -67,6 +67,7 @@ plt.ylabel("y")
 # 显示图形
 plt.show()
 
+
 plt.figure(figsize=(8, 4))
 plt.subplot(1, 2, 1)
 plt.scatter(X, y, marker='*')
@@ -74,20 +75,20 @@ plt.plot(X, predicted_ridge, c='r')
 # 绘制x轴和y轴坐标
 plt.xlabel("x")
 plt.ylabel("y")
-plt.title('岭回归')
+plt.title('Ridge')
 plt.subplot(1, 2, 2)
 plt.scatter(X, y, marker='*')
 plt.plot(X, predicted_lasso, c='r')
 # 绘制x轴和y轴坐标
 plt.xlabel("x")
 plt.ylabel("y")
-plt.title('lasso回归')
+plt.title('lasso')
 plt.show()
 
 plt.figure(figsize=(8, 6))
 plt.scatter(X, y, marker='*')
-plt.plot(X, predicted_ridge, color='green', marker='*', label='岭回归')
-plt.plot(X, predicted_lasso, color='red', marker='*', label='lasso回归')
+plt.plot(X, predicted_ridge, color='green', marker='*', label='Ridge')
+plt.plot(X, predicted_lasso, color='red', marker='*', label='lasso')
 # 绘制x轴和y轴坐标
 plt.xlabel("x")
 plt.ylabel("y")
