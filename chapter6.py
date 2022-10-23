@@ -11,6 +11,8 @@ from GM11 import GM11  # 引入自编的灰色预测函数
 from sklearn.svm import LinearSVR
 
 from matplotlib import font_manager
+import warnings
+warnings.filterwarnings("ignore")  # 忽略警告
 print(matplotlib.get_data_path())
 print(matplotlib.get_cachedir())
 # exit()
@@ -39,7 +41,7 @@ print('相关系数矩阵为：\n', np.round(corr, 2))  # 保留两位小数
 # plt.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
 plt.subplots(figsize=(10, 10))  # 设置画面大小
 sns.heatmap(corr, annot=True, vmax=1, square=True, cmap="Blues")
-plt.title('相关性热力图')
+plt.title('Correlative Thermodynamic Diagram')
 plt.show()
 plt.close()
 

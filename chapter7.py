@@ -4,8 +4,11 @@ from datetime import datetime
 from sklearn.preprocessing import StandardScaler
 import numpy as np
 from sklearn.cluster import KMeans  # 导入kmeans算法
+from mplfonts import use_font
+use_font('Noto Sans CJK SC')
 
-
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 正常显示中文汉字
+plt.rcParams['axes.unicode_minus'] = False  # 解决保存图片为负号显示为方块的问题
 # 对数据进行基本的探索
 # 返回缺失值个数以及最大最小值
 datafile = './data_chapter7/air_data.csv'  # 航空原始数据,第一行为属性标签
@@ -15,7 +18,7 @@ resultfile = './data_chapter7/explore.csv'  # 数据探索结果表
 data = pd.read_csv(datafile, encoding='utf-8')
 # 包括对数据的基本描述，percentiles参数是指定计算多少的分位数表（如1/4分位数、中位数等）
 explore = data.describe(percentiles=[], include='all').T  # T是转置，转置后更方便查阅
-explore['null'] = len(data)-explore['count']  # describe()函数自动计算非空值数，需要手动计算空值数
+explore['null'] = len(data) - explore['count']  # describe()函数自动计算非空值数，需要手动计算空值数
 explore = explore[['null', 'max', 'min']]
 explore.columns = ['空值数', '最大值', '最小值']  # 表头重命名
 '''
@@ -25,7 +28,6 @@ freq（最高频数）、mean（平均值）、std（方差）、min（最小值
 '''
 
 explore.to_csv(resultfile)  # 导出结果
-
 
 # 2. 对数据的分布分析
 datafile = './data_chapter7/air_data.csv'  # 航空原始数据,第一行为属性标签
@@ -87,7 +89,6 @@ plt.grid(axis='y')
 plt.show()
 plt.close()
 
-
 # 处理缺失值与异常值
 datafile = './data_chapter7/air_data.csv'  # 航空原始数据路径
 cleanedfile = './data_chapter7/data_cleaned.csv'  # 数据清洗后保存的文件路径
@@ -111,7 +112,6 @@ print('数据清洗后数据的形状为：', airline.shape)
 
 airline.to_csv(cleanedfile)  # 保存清洗后的数据
 
-
 # 属性选择、构造与数据标准化
 # 读取数据清洗后的数据
 cleanedfile = './data_chapter7/data_cleaned.csv'  # 数据清洗后保存的文件路径
@@ -125,7 +125,7 @@ print('筛选的属性前5行为：\n', airline_selection.head())
 # 构造属性L
 L = pd.to_datetime(airline_selection['LOAD_TIME']) - pd.to_datetime(airline_selection['FFP_DATE'])
 L = L.astype('str').str.split().str[0]
-L = L.astype('int')/30
+L = L.astype('int') / 30
 
 # 合并属性
 airline_features = pd.concat([L, airline_selection.iloc[:, 2:]], axis=1)
@@ -137,7 +137,6 @@ data = StandardScaler().fit_transform(airline_features)
 np.savez('./data_chapter7/airline_scale.npz', data)
 print(data)
 print('标准化后LRFMC五个属性为：\n', data[:5, :])
-
 
 # 读取标准化后的数据
 airline_scale = np.load('./data_chapter7/airline_scale.npz')['arr_0']
@@ -157,7 +156,7 @@ r1 = pd.Series(kmeans_model.labels_).value_counts()  # 统计不同类别样本�
 print('最终每个类别的数目为：\n', r1)
 
 # 输出聚类分群的结果
-cluster_center = pd.DataFrame(kmeans_model.cluster_centers_, columns=['ZL', 'ZR', 'ZF', 'ZM', 'ZC'])   # 将聚类中心放在数据框中
+cluster_center = pd.DataFrame(kmeans_model.cluster_centers_, columns=['ZL', 'ZR', 'ZF', 'ZM', 'ZC'])  # 将聚类中心放在数据框中
 print(cluster_center)
 cluster_center.index = pd.DataFrame(kmeans_model.labels_).drop_duplicates().iloc[:, 0]  # 将样本类别作为数据框索引
 print(cluster_center.index)
@@ -193,7 +192,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 color = ['b', 'g', 'r', 'c', 'y']  # 指定颜色
 for i in range(len(kinds)):
-    ax.plot(angle, centers[i], linestyle=lstype[i], color=color[i], linewidth=2, label=u'客户群'+str(i))
+    ax.plot(angle, centers[i], linestyle=lstype[i], color=color[i], linewidth=2, label=u'客户群' + str(i))
 # 添加属性标签
 ax.set_thetagrids(angle * 180 / np.pi, labels)
 plt.title('客户特征分析雷达图')
@@ -201,5 +200,3 @@ plt.legend(legen)
 plt.savefig('./data_chapter7/res.jpg', dpi=300)
 plt.show()
 plt.close()
-
-
