@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Ridge, RidgeCV   # Ridge岭回归,RidgeCV带有广义交叉验证的岭回归
-from sklearn.linear_model import Lasso, LassoCV, LassoLarsCV  # Lasso回归
+from sklearn.linear_model import Lasso, LassoCV, LassoLarsCV  # Lasso回归聚类分析的方法对数据进行离散化，并对相关代码进行分析，绘出结果。
 
 
 # 样本数据集，第一列为x，第二列为y，在x和y之间建立回归模型
